@@ -1,63 +1,66 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DFA/NFA Visualizer</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DFA/NFA Visualizer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>DFA/NFA String Processing Visualizer</h1>
-  </header>
+    <header>
+        <h1>DFA/NFA String Processing Visualizer</h1>
+    </header>
 
-  <main>
-    <section id="table-panel">
-      <h2>Transition table <span id="kind-badge" class="badge"></span></h2>
-      <div id="table-container"></div>
-      <p class="hint">Type a target state in a cell and press <kbd>Tab</kbd> to add it.
-        Add more for an NFA. <kbd>Backspace</kbd> on an empty cell removes the last one.</p>
-    </section>
+    <main>
+        <section id="table-panel">
+            <h2>Transition table <span id="kind-badge" class="badge"></span></h2>
+            <div id="table-container"></div>
+            <p class="hint">Type a target state in a cell and press <kbd>Tab</kbd> to add it.
+                Add more for an NFA. <kbd>Backspace</kbd> on an empty cell removes the last one.</p>
+        </section>
 
-    <section id="graph-panel">
-      <div class="panel-head">
-        <h2>Machine</h2>
-        <span id="stale-note" class="hint" hidden>Table changed. Build again to update.</span>
-        <button id="build-btn" type="button" class="primary">Build</button>
-      </div>
-      <ul id="errors" class="errors" hidden></ul>
-      <div id="graph"><p class="placeholder">Fill in the table and press Build.</p></div>
-    </section>
+        <section id="graph-panel">
+            <div class="panel-head">
+                <h2>Machine</h2>
+                <span id="stale-note" class="hint" hidden>Table changed. Build again to update.</span>
+                <button id="build-btn" type="button" class="primary">Build</button>
+            </div>
+            <ul id="errors" class="errors" hidden></ul>
+            <div id="graph">
+                <p class="placeholder">Fill in the table and press Build.</p>
+            </div>
+        </section>
 
-    <section id="run-panel">
-      <h2>Run</h2>
-      <div class="run-controls">
-        <input id="input-str" class="input-str" placeholder="Input string, e.g. abba"
-               spellcheck="false" autocomplete="off" aria-label="Input string">
-        <button id="back-btn" type="button">◀ Back</button>
-        <button id="step-btn" type="button">Step ▶</button>
-        <button id="play-btn" type="button" class="primary">Play</button>
-        <button id="reset-btn" type="button">Reset</button>
-        <label class="speed">Speed
-          <input id="speed" type="range" min="400" max="2200" step="100" value="1400">
-        </label>
-      </div>
-      <ul id="run-errors" class="errors" hidden></ul>
-      <div id="tape" class="tape" aria-label="Input tape"></div>
-      <p id="run-status" class="run-status" aria-live="polite"></p>
-      <div id="verdict" class="verdict" hidden></div>
-    </section>
-  </main>
-
-  <!-- Local copy (gitignored) for offline use; falls back to the CDN if it's missing. -->
-  <script src="cytoscape.min.js"></script>
-  <script>
-    window.cytoscape || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.34.3/cytoscape.min.js" integrity="sha512-SQebVa91Tn1DeP45Wo74monK/I9wiQg59uKc7P8vp3T7KQ9l5e8IMjZ1GJTgZehUVQt7eS61DTqldQUb1EHfnw==" crossorigin="anonymous"><\/script>');
-  </script>
-  <script src="automaton.js"></script>
-  <script src="table.js"></script>
-  <script src="graph.js"></script>
-  <script src="run.js"></script>
-  <script src="main.js"></script>
+        <section id="run-panel">
+            <h2>Run</h2>
+            <div class="run-controls">
+                <input id="input-str" class="input-str" placeholder="Input string, e.g. abba" spellcheck="false"
+                    autocomplete="off" aria-label="Input string">
+                <button id="back-btn" type="button">◀️ Back</button>
+                <button id="step-btn" type="button">Step ▶️</button>
+                <button id="play-btn" type="button" class="primary">Play</button>
+                <button id="reset-btn" type="button">Reset</button>
+                <label class="speed">Speed
+                    <input id="speed" type="range" min="400" max="2200" step="100" value="1400">
+                </label>
+            </div>
+            <ul id="run-errors" class="errors" hidden></ul>
+            <div id="tape" class="tape" aria-label="Input tape"></div>
+            <p id="run-status" class="run-status" aria-live="polite"></p>
+            <div id="verdict" class="verdict" hidden></div>
+        </section>
+    </main>
+    <script src="cytoscape.min.js"></script>
+    <script>
+        window.cytoscape || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.34.3/cytoscape.min.js" integrity="sha512-SQebVa91Tn1DeP45Wo74monK/I9wiQg59uKc7P8vp3T7KQ9l5e8IMjZ1GJTgZehUVQt7eS61DTqldQUb1EHfnw==" crossorigin="anonymous"><\/script>');
+    </script>
+    <script src="automaton.js"></script>
+    <script src="table.js"></script>
+    <script src="graph.js"></script>
+    <script src="run.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>

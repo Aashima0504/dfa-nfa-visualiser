@@ -1,5 +1,4 @@
-// Run panel: input tape, step/play controls and the accept/reject verdict.
-// Plays back an Automaton.simulate() trace on the graph one step at a time.
+
 
 const Run = (() => {
   const fmt = (states) => `{${states.join(", ")}}`;
@@ -14,14 +13,14 @@ const Run = (() => {
     const status = $("run-status");
     const verdict = $("verdict");
 
-    let m = null;       // machine snapshot from the last Build
+    let m = null;
     let graph = null;
-    let run = null;     // { steps, accepted, deadAt, input } once started
-    let k = 0;          // step currently shown
+    let run = null;
+    let k = 0;
     let timer = null;
 
     const last = () => run.steps.length - 1;
-    const delay = () => 2600 - Number(speed.value); // slider right = faster
+    const delay = () => 2600 - Number(speed.value);
 
     function setMachine(machine, g) {
       m = machine;
@@ -30,7 +29,7 @@ const Run = (() => {
       invalidate();
     }
 
-    // Input or machine changed: drop the current run.
+
     function invalidate() {
       stop();
       run = null;
@@ -129,7 +128,7 @@ const Run = (() => {
       status.textContent = k === 0
         ? `Start in ${fmt(current.active)}.`
         : `Step ${k} of ${run.input.length}: read '${current.symbol}' → ` +
-          (current.active.length ? fmt(current.active) : "∅ (no states left)");
+        (current.active.length ? fmt(current.active) : "∅ (no states left)");
     }
 
     function renderVerdict(finished) {
